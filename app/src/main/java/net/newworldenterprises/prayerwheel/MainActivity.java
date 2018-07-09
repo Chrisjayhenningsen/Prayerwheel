@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -15,17 +17,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-  //      Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-    //    setSupportActionBar(toolbar);
-
-     //   FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-       // fab.setOnClickListener(new View.OnClickListener() {
-         //   @Override
-           // public void onClick(View view) {
-             //   Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-               //         .setAction("Action", null).show();
-           // }
-       // });
     }
 
     @Override
@@ -35,18 +26,26 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+    public void sendprayers(View view){
+        EditText prayinput;
+        prayinput = (EditText)findViewById(R.id.editPrayer);
+        String userprayer = prayinput.getText().toString();
+        //String prayer = findViewById(R.id.editPrayer).toString();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+        EditText cypherInput;
+        cypherInput = (EditText)findViewById(R.id.editrepetions);
+        int praynum = Integer.parseInt(cypherInput.getText().toString());
 
-        return super.onOptionsItemSelected(item);
+        int i = 0;
+        TextView show_prayer =(TextView) findViewById(R.id.prayerreturn);
+
+        while (i<praynum){
+            show_prayer.setText(userprayer.toString());
+            i=i+1;
+        };
+
+
     }
+
+
 }
